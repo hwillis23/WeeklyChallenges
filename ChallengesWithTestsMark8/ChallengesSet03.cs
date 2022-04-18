@@ -15,7 +15,7 @@ namespace ChallengesWithTestsMark8
 
             for (int i = 0; i < vals.Length; i++)
             {
-                if (vals[i] == false)
+                if (vals[i] == false)     //or can put as: if(!vals[i])
                 {
                     return true;
                 }
@@ -43,50 +43,47 @@ namespace ChallengesWithTestsMark8
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            int validConditions = 0;
-            foreach (char c in password)
+           var isLower = false;
+            var isUpper = false;
+            var isDigit = false;
+
+            for (int i = 0; i < password.Length; i++)
             {
-                if (c >= 'a' && c <= 'z')
+                if (char.IsLower(password[i]))
                 {
-                    validConditions++;
-                    break;
+                    isLower = true;
                 }
-                {
-                    return true;
-                }
-            } return false;
 
-            foreach (char c in password)
-            {
-                if (c >= 'A' && c <= 'Z')
+                if (char.IsUpper(password[i]))
                 {
-                    validConditions++;
-                    break;
+                    isUpper = true;
                 }
+                if (char.IsDigit(password[i]))
                 {
-                    return true;
+                    isDigit = true;
                 }
-            } return false;
-
-            if (validConditions == 0) return false;
-
-            foreach (char c in password)
-            {
-                if (c >= '0' && c <= '9')
-                {
-                    validConditions++;
-                    break;
-                    {
-                        return true;
-                    }
-                }
-                return false;
-
             }
+
+                if (isLower == true && isUpper == true && isDigit == true)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+
+            
+
+        }
 
             public char GetFirstLetterOfString(string val)
             {
-                return val[0];
+                return val[0];    
+               
+              // return val.First();  using Linq
+
             }
 
             public char GetLastLetterOfString(string val)
@@ -95,55 +92,62 @@ namespace ChallengesWithTestsMark8
             {
                 return val [val.Length - 1];
 
+             // return val.Last();  using Linq
+
             }
 
-            public decimal Divide(decimal dividend, decimal divisor)
-            {
-                if (divisor == 0 || dividend == 0)
-                {
-                    return 0;
-                }
+    public decimal Divide(decimal dividend, decimal divisor)
+    {
+        if (divisor == 0)
+        {
+            return 0;
+        }
 
-                return dividend / divisor;
+        return dividend / divisor;
+    }
 
 
 
                 public int LastMinusFirst(int[] nums)
                 {
                     return nums[nums.Length - 1] - nums[0];
+
+                 //return nums.Last() - nums.First();
                 }
 
                 public int[] GetOddsBelow100()
                 {
-                    int[] nums = new int[100];
+                    var nums = new List<int>();   //create a list  , they are more flexible
 
-                    for (int i = 0; i < nums.Length; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         //condition to check ODD number
-                        if (nums[i] % 2 != 0)
+                        if (i % 2 != 0)
 
                         {
-                            return nums;
-
+                           nums.Add (i);
                         }
-
                     }
 
+                return nums.ToArray();
+                
                 }
 
                 public void ChangeAllElementsToUppercase(string[] words)
                 {
-                    for (int i = 0; i < words.Length; i++)
+                    for (var i = 0; i < words.Length; i++)
                     {
                         words[i] = words[i].ToUpper();
                     }
 
+                    // can't really do Foreach loop with this method
+
                 }
             }
         }
-    }
+    
 
-}
+
 
 
 
