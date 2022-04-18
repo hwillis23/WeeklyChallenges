@@ -86,17 +86,14 @@ namespace ChallengesWithTestsMark8
 
             public char GetFirstLetterOfString(string val)
             {
-                // str = str.Substring(n);//
-
-                char firstCharacter = str[0];
-                Console.WriteLine(firstCharacter);
+                return val[0];
             }
 
             public char GetLastLetterOfString(string val)
 
 
             {
-                return char lastCharacter = str[0];
+                return val [val.Length - 1];
 
             }
 
